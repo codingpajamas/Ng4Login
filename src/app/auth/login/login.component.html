@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-sm-8 col-sm-push-2 col-md-4 col-md-push-4">
+		<br><br>
+		<form action="" class="panel panel-default" (submit)="submitLogin(inputEmail.value, inputPassword.value)">
+			<div class="panel-heading">
+				<h3>Login</h3>
+			</div>
+			<div class="panel-body">
+				<p>
+					Email
+					<input type="text" class="form-control input-sm" #inputEmail>
+				</p>
+				<p>
+					Password
+					<input type="password" class="form-control input-sm" #inputPassword>
+				</p>
+				<div *ngIf="errLogin" class="alert alert-danger">{{errLogin}}</div>
+				<p>
+					<input type="submit" value="Login" class="btn btn-primary btn-block">
+				</p>
+			</div>
+		</form>
+	</div>
+</div>
