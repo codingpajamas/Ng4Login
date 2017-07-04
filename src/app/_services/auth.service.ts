@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   fetchProfile():Observable<any> {
-    // reset headers then set headers 
+    // reset Authorization header to use the newly saved "token" 
     this.headers.delete('Authorization'); 
     this.headers.append('Authorization', `Bearer ${localStorage.getItem("token")}`); 
 
