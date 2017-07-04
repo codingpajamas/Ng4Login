@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" id="mainNav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#omoMainNav" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#appMenuNav" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -11,15 +11,33 @@
         LoginApp
       </a> 
     </div>
-    <div class="collapse navbar-collapse" id="omoMainNav"> 
-      <ul #isLoggedIn *ngIf="isLoggedIn" class="nav navbar-nav navbar-right">
-        <li data-toggle="collapse" data-target="#omoMainNav"><a routerLink="/home">Home</a></li>
-        <li data-toggle="collapse" data-target="#omoMainNav"><a (click)="logout()" href="#">logout</a></li>
-      </ul>
-      <ul #isLoggedIn *ngIf="!isLoggedIn" class="nav navbar-nav navbar-right">
-        <li data-toggle="collapse" data-target="#omoMainNav"><a routerLink="/login">Login</a></li>
-        <li data-toggle="collapse" data-target="#omoMainNav"><a>register</a></li> 
-      </ul>
+
+    <!-- this is the menu to show on larger screen -->
+    <div class="hidden-xs">
+      <div class="collapse navbar-collapse" id="appMainNav"> 
+        <ul #isLoggedIn *ngIf="isLoggedIn" class="nav navbar-nav navbar-right">
+          <li><a routerLink="/home">Home</a></li>
+          <li><a (click)="logout()" href="#">Logout</a></li>
+        </ul>
+        <ul #isLoggedIn *ngIf="!isLoggedIn" class="nav navbar-nav navbar-right">
+          <li><a routerLink="/login">Login</a></li>
+          <li><a routerLink="/register">Register</a></li> 
+        </ul>
+      </div>
+    </div>
+
+    <!-- this is the menu to show on collapsed menu, it has toggle collapse to close the opened menu when clicked -->
+    <div class="hidden-sm hidden-md hidden-lg">
+      <div class="collapse navbar-collapse" id="appMenuNav"> 
+        <ul #isLoggedIn *ngIf="isLoggedIn" class="nav navbar-nav navbar-right">
+          <li data-toggle="collapse" data-target="#appMenuNav"><a routerLink="/home">Home</a></li>
+          <li data-toggle="collapse" data-target="#appMenuNav"><a (click)="logout()" href="#">Logout</a></li>
+        </ul>
+        <ul #isLoggedIn *ngIf="!isLoggedIn" class="nav navbar-nav navbar-right">
+          <li data-toggle="collapse" data-target="#appMenuNav"><a routerLink="/login">Login</a></li>
+          <li data-toggle="collapse" data-target="#appMenuNav"><a routerLink="/register">Register</a></li> 
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

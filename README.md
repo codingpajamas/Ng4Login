@@ -1,11 +1,15 @@
-# Angular 4Login
+# Angular 4 Login
 
 This simple application demonstrate Login functionality in Angular 4. Functionalities included :
 
-* Login form
+* Login page
 * Authentication service to login and fetch profile
 * App-wide components communication
 * Protected routes using `canActivate`
+
+Added features :
+
+* Register page
 
 ## Backend not included
 

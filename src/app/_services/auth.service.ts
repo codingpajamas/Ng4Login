@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 export class AuthService {
  
   private headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'});
-  private baseUrl = 'http://laravelwithdingo.dev/api/';
+  private baseUrl = 'http://sample-laravelapp-with-dingo.dev/api/';
 
   // app-wide checking if current user is loggedin, particularly used in checking Navbar Menu
   private isLoggedSource = new Subject<boolean>();
@@ -24,6 +24,7 @@ export class AuthService {
     this.isLoggedSource.next(isLoggedIn);
   }
 
+  // submit login and get token
   login(email:string, password:string):Observable<string> {
     return this.http.post(
         this.baseUrl + 'login',
@@ -45,11 +46,13 @@ export class AuthService {
       })
   }  
 
+  // get profile info saved in the localstorage
   getProfile():any {
     let profile = localStorage.getItem('profile'); 
     return JSON.parse(profile) ? JSON.parse(profile) : null; 
   }
 
+  // fetch the current loggedin user info in "/profile" endpoint
   fetchProfile():Observable<any> {
     // reset Authorization header to use the newly saved "token" 
     this.headers.delete('Authorization'); 
@@ -69,5 +72,27 @@ export class AuthService {
         return Observable.throw(_err);
       })
   }
+
+  // submit register and get token
+  register(email:string, password:string, confirm:string, firstname:string, lastname:string):Observable<string> {
+    return this.http.post(
+        this.baseUrl + 'register',
+        JSON.stringify({email:email, password:password, password_confirmation:confirm, first_name:firstname, last_name:lastname}),
+        { headers: this.headers }
+      )
+      .map(response => {
+        let res = response.json(); 
+
+        // save token to localstorage
+        localStorage.setItem('token', res.token);
+
+        // update "isLoggedSource" by triggering checkLoggedIn method 
+        this.checkLoggedIn(true);
+      })
+      .catch(e => {
+        let _err = e._body;
+        return Observable.throw(_err);
+      })
+  }  
 
 }

@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-sm-8 col-sm-push-2 col-md-4 col-md-push-4">
+		<br><br>
+		<form action="" 
+			class="panel panel-default" 
+			(submit)="submitRegister(inputEmail.value, inputPassword.value, inputPasswordConfirmtion.value, inputFirstName.value, inputLastName.value)"
+		>
+			<div class="panel-heading">
+				<h3>Register</h3>
+			</div>
+			<div class="panel-body">
+				<p [ngClass]="{'has-error' : errRegister.email}">
+					<span class="show clearfix">
+						<small class="pull-right"><em>required</em></small>
+						Email
+					</span>
+					<input type="text" class="form-control input-sm" #inputEmail>
+					<small *ngIf="errRegister.email" class="text-danger">{{errRegister.email}}</small>
+				</p>
+				<p [ngClass]="{'has-error' : errRegister.password}">
+					<span class="show clearfix">
+						<small class="pull-right"><em>required</em></small>
+						Password
+					</span>
+					<input type="password" class="form-control input-sm" #inputPassword>
+					<small *ngIf="errRegister.password" class="text-danger">{{errRegister.password}}</small>
+				</p>
+				<p [ngClass]="{'has-error' : errRegister.password}">
+					<span class="show clearfix">
+						<small class="pull-right"><em>required</em></small>
+						Change Password
+					</span>
+					<input type="password" class="form-control input-sm" #inputPasswordConfirmtion>
+					<small *ngIf="errRegister.password" class="text-danger">{{errRegister.password}}</small>
+				</p>
+				<p [ngClass]="{'has-error' : errRegister.first_name}">
+					<span class="show clearfix">
+						<small class="pull-right"><em>required</em></small>
+						First Name
+					</span>
+					<input type="text" class="form-control input-sm" #inputFirstName>
+					<small *ngIf="errRegister.first_name" class="text-danger">{{errRegister.first_name}}</small>
+				</p>
+				<p [ngClass]="{'has-error' : errRegister.last_name}">
+					<span class="show clearfix">
+						<small class="pull-right"><em>required</em></small>
+						Last Name
+					</span>
+					<input type="text" class="form-control input-sm" #inputLastName>
+					<small *ngIf="errRegister.last_name" class="text-danger">{{errRegister.last_name}}</small>
+				</p>
+				<p>
+					<input type="submit" value="Join Now!" class="btn btn-primary btn-block">
+				</p>
+			</div>
+		</form>
+	</div>
+</div>
