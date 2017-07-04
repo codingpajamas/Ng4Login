@@ -93,6 +93,23 @@ export class AuthService {
         let _err = e._body;
         return Observable.throw(_err);
       })
-  }  
+  } 
+
+  // submit login and get token
+  forgotpass(email:string):Observable<string> {
+    return this.http.post(
+        this.baseUrl + 'forgot',
+        JSON.stringify({email:email}),
+        { headers: this.headers }
+      )
+      .map(response => {
+        let res = response.json();
+        return res && res.message ? res.message : '';
+      })
+      .catch(e => {
+        let _err = e._body;
+        return Observable.throw(_err);
+      })
+  }   
 
 }

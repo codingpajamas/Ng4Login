@@ -10,7 +10,8 @@ This simple application demonstrate Login functionality in Angular 4. Functional
 Added features :
 
 * Register page
-* Mapping laravel validation errors to form fields
+* Forgot password page
+* Mapping server/api validation errors to form fields
 
 ## Backend not included
 

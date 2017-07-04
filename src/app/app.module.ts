@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RegisterComponent } from './auth/register/register.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,10 @@ import { RegisterComponent } from './auth/register/register.component';
       {
         path: 'register',
         component: RegisterComponent
+      },
+      {
+        path: 'forgotpassword',
+        component: ForgotpasswordComponent
       },
       {
         path: 'home',
